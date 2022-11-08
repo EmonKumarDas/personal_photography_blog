@@ -6,10 +6,18 @@ import State from '../smallPages/state/State';
 
 const HomePage = () => {
 
-    const [services,setServices] = useState([])
-    useEffect(()=>{
-        fetch("http://localhost:5000/services").then(res=>res.json()).then(result=>setServices(result))
-    },[])
+    const [services, setServices] = useState([])
+    const [counter, setCounter] = useState([]);
+    const [page, setPage] = useState(0);
+    const [size, setSize] = useState(3);
+    const pages = Math.ceil(counter / size);
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/services?page=${page}&size=${size}`).then(res => res.json()).then(result => {
+            setCounter(result.count)
+            setServices(result.newService)
+        })
+    }, [page, size])
 
     return (
         <div>
@@ -18,26 +26,32 @@ const HomePage = () => {
             <h1 className='text-center font-bold text-4xl text-white dark:bg-gray-800 py-10'>
                 Services
             </h1>
-
-
             <section className="dark:bg-gray-800 dark:text-gray-100">
                 <div className="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
                     <div className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                         {
-                            services.map(service=><Card 
-                                key={service.service_id} 
-                                service={service}
-                            ></Card>)
+                            services.map(service =>
+                                <Card
+                                    key={service.service_id}
+                                    service={service}
+                                ></Card>)
                         }
+
+
+
                     </div>
                     <div className="flex justify-center">
                         <button type="button" className="px-6 py-3 text-sm rounded-md hover:underline dark:bg-gray-900 dark:text-gray-400">Load more posts...</button>
                     </div>
                 </div>
+
             </section>
-
-
+            <p>Total Data {counter} Selected page {page + 1}</p>
+            {
+                [...Array(pages).keys()].map(number => <button onClick={() => setPage(number)} className='bg-slate-500 hover:bg-slate-700 active:bg-slate-900 focus:outline-none text-white focus:ring focus:ring-violet-300 m-2 p-4 rounded'>{number + 1}</button>)
+            }
             <State></State>
+
         </div>
     );
 };
