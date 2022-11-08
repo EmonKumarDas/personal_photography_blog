@@ -2,17 +2,17 @@ import React from 'react';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 
-const AllcategorisCart = ({allCategories}) => {
+const AllcategorisCart = ({ allCategories }) => {
     console.log(allCategories)
-    const {title,img,price,description} = allCategories;
+    const { title, img, price, description } = allCategories;
     return (
         <article className="flex flex-col dark:bg-gray-900">
             <a rel="noopener noreferrer" href="#" aria-label="Te nulla oportere reprimique his dolorum">
-            <PhotoProvider>
-      <PhotoView src={img}>
-      <img alt="/" className="object-cover h-96 w-full rounded dark:bg-gray-500" src={img} />
-      </PhotoView>
-    </PhotoProvider>
+                <PhotoProvider>
+                    <PhotoView src={img}>
+                        <img alt="/" className="object-cover h-96 w-full rounded dark:bg-gray-500" src={img} />
+                    </PhotoView>
+                </PhotoProvider>
             </a>
             <div className="flex flex-col flex-1 p-6">
                 <a rel="noopener noreferrer" href="#" aria-label="Te nulla oportere reprimique his dolorum"></a>
@@ -25,7 +25,7 @@ const AllcategorisCart = ({allCategories}) => {
                 </div>
             </div>
         </article>
-      
+
     );
 };
 
