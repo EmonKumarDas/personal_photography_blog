@@ -1,0 +1,55 @@
+[
+    { 
+        "service_id": "04",
+        "title": "Wedding photography",
+        "img": "https://images.pexels.com/photos/11762791/pexels-photo-11762791.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "price": "20.00",
+        "description": "Wedding photographers capture memories for brides and grooms, creating a photographic narrative of wedding ceremonies. They take action shots of pre-ceremony preparations, the marriage ceremony, and the reception. They also take posed shots of the bride, groom, wedding party, and family members."
+
+    },
+    {
+      
+        "service_id": "05",
+        "title": "Travel photography",
+        "img": "https://images.pexels.com/photos/3785191/pexels-photo-3785191.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "price": "20.00",
+        "description": "A travel writer and photographer is a specialist who often travels to far-away destinations to develop stories and photos for tourism-related journalism. They may be employed by newspapers, magazines, trade publications, the government or as freelance writers and photographers."
+  
+    },
+    {
+    
+        "service_id": "01",
+        "title": "Astrophotography",
+        "img": "https://images.pexels.com/photos/3347324/pexels-photo-3347324.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "price": "200.00",
+        "description": "Astrophotographers capture areas of the night sky, astronomical objects, and celestial events. There are several types of astrophotography, including deep space, the solar system, wide field, and time-lapse. Many consider astrophotography the most humbling among all types of photography. Not only does it make us realize that we are only a speck of dust in this vast universe, it’s also incredibly demanding from a technical point of view. "
+ 
+    },
+    {
+        
+        "service_id": "02",
+        "title": "Commercial photography",
+        "img": "https://images.pexels.com/photos/10413737/pexels-photo-10413737.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "price": "150.00",
+        "description": "Essentially, commercial photography is the name given to any kind of images taken with the intent of selling or promoting a product or service. Because of the long list of genres that can actually be considered commercial photography at a certain time (basically any of them, really), this is often considered one of the most complex types of photography. Therefore, if you want to become a professional photographer, commercial photography is most definitely something you should work towards."
+
+    },
+    {
+        
+        "service_id": "03",
+        "title": "Fashion photography",
+        "img": "https://images.pexels.com/photos/2752045/pexels-photo-2752045.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "price": "30.00",
+        "description": "From the runways in Milan to cover shots in the design districts of New York, fashion photography portfolios focus on capturing visually outstanding portraits of models wearing trendy clothes, shoes, and accessories. It’s clear that when it comes to glamour and big names, fashion photography is the place to be. However, this type of photography is as glamorous as it is difficult to enter. On top of a lot of hard work of perseverance, you’ll need a great deal of technical knowledge, an eye for fashion, and strong people skills."
+
+    },
+    {
+        
+        "service_id": "06",
+        "title": "Event photography",
+        "img": "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "price": "20.00",
+        "description": "Pics or it didn't happen could just as well be the defining motto of current society. From weddings and graduations to networking events and concert photography, the demand for event photography is at an all-time high. It seems that every occasion must be captured and later shared online in order to hold some sort of value, especially when it comes to celebrations and business events. If you’re thinking of  becoming an event photographer, you should start by strengthening your people skills and talk to businesses around your area. "
+
+    }
+]
