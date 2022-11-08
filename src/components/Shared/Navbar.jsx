@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { userContext } from '../context/ContextProvider';
 
-const Navbar = () => {
+const Navbar = ({children}) => {
+const {user,logout} = useContext(userContext);
+const handlelogout=()=>{
+  logout().then(()=>{
+
+  })
+}
   const menubar = <>
     <div className='flex space-x-5 font-bold'>
       <Link to="/home"><li>Home</li></Link>
@@ -30,10 +37,15 @@ const Navbar = () => {
           {menubar}
         </ul>
       </div>
+     {
+      user?.email ?<div className="navbar-end">
+        <button onClick={handlelogout} className="btn mr-1">LogOut</button>
+      </div> : 
       <div className="navbar-end">
-        <Link to='login'><button className="btn mr-1">lOGIN</button></Link>
-        <button className="btn">Register</button>
-      </div>
+      <Link to='login'><button className="btn mr-1">lOGIN</button></Link>
+      <button className="btn">Register</button>
+    </div>
+     }
     </div>
   );
 };
