@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Card from '../smallPages/Card/Card';
 import PhotograpyBlog from '../smallPages/photographyBlog/PhotograpyBlog';
 import Slider from '../smallPages/Slider/Slider';
@@ -10,6 +11,7 @@ const HomePage = () => {
     const [counter, setCounter] = useState([]);
     const [page, setPage] = useState(0);
     const [size, setSize] = useState(3);
+    const [loding,setLoding] = useState(false)
     const pages = Math.ceil(counter / size);
 
     useEffect(() => {
@@ -37,19 +39,19 @@ const HomePage = () => {
                                 ></Card>)
                         }
 
-
-
                     </div>
                     <div className="flex justify-center">
-                        <button type="button" className="px-6 py-3 text-sm rounded-md hover:underline dark:bg-gray-900 dark:text-gray-400">Load more posts...</button>
+                        <Link to='/allCategories'><button type="button" className="px-6 py-3 text-sm rounded-md hover:underline dark:bg-gray-900 dark:text-gray-400">Load more posts...</button></Link>
                     </div>
                 </div>
 
             </section>
-            <p>Total Data {counter} Selected page {page + 1}</p>
+           <div className='dark:bg-gray-800 px-20'>
+           <p>Total Data {counter} Selected page {page + 1}</p>
             {
                 [...Array(pages).keys()].map(number => <button onClick={() => setPage(number)} className='bg-slate-500 hover:bg-slate-700 active:bg-slate-900 focus:outline-none text-white focus:ring focus:ring-violet-300 m-2 p-4 rounded'>{number + 1}</button>)
             }
+           </div>
             <State></State>
 
         </div>
