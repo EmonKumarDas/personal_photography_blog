@@ -54,7 +54,7 @@ const Navbar = ({ children }) => {
           :
           <div className="navbar-end">
             <Link to='login'><button className="btn mr-1">lOGIN</button></Link>
-            <button className="btn">Register</button>
+            <Link to="/register"><button className="btn">Register</button></Link>
           </div>
       }
 
