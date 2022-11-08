@@ -3,6 +3,7 @@ import AllCategories from "../pages/AllCategories";
 import CardDetails from "../pages/CardDetails";
 import HomePage from "../pages/HomePage";
 import Login from "../SignIn/Login";
+import Registration from "../SignIn/Registration";
 import Main from "./Main";
 
 const router = createBrowserRouter([
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
         {
           path: "/login",
           element:<Login></Login>,
+      },
+        {
+          path: "/register",
+          element:<Registration></Registration>,
       }
 
       ]

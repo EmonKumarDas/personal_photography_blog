@@ -1,21 +1,32 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { userContext } from '../context/ContextProvider';
 
-const Login = ({children}) => {
-    const {googleSignIn} = useContext(userContext);
-    const HandlegoogleLogin=()=>{
-        googleSignIn().then((result)=>{
+const Login = ({ children }) => {
+    const { googleSignIn } = useContext(userContext);
+    const HandlegoogleLogin = () => {
+        googleSignIn().then((result) => {
             console.log(result);
         })
     }
+
+    const handlelogin = (e) => {
+        e.preventDefault();
+        const name = e.target.name.value;
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        console.log(name, email, password);
+
+    }
+
     return (
         <div className='flex justify-center my-5'>
             <div className="w-full max-w-md p-4 rounded-md shadow sm:p-8 dark:bg-gray-900 dark:text-gray-100">
                 <h2 className="mb-3 text-3xl font-semibold text-center">Login to your account</h2>
                 <p className="text-sm text-center dark:text-gray-400">Dont have account?
-                    <a href="#" rel="noopener noreferrer" className="focus:underline hover:underline">Sign up here</a>
+                    <Link to={'/register'} rel="noopener noreferrer" className="focus:underline hover:underline">Sign up here</Link>
                 </p>
-                
+
                 <div onClick={HandlegoogleLogin} className="my-6 space-y-4">
                     <button aria-label="Login with Google" type="button" className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-blue-400">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" className="w-5 h-5 fill-current">
@@ -30,22 +41,26 @@ const Login = ({children}) => {
                     <p className="px-3 dark:text-gray-400">OR</p>
                     <hr className="w-full dark:text-gray-400" />
                 </div>
-                <form novalidate="" action="" className="space-y-8 ng-untouched ng-pristine ng-valid">
-                    <div className="space-y-4">
-                        <div className="space-y-2">
-                            <label for="email" className="block text-sm">Email address</label>
-                            <input type="email" name="email" id="email" placeholder="leroy@jenkins.com" className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-blue-400" />
-                        </div>
-                        <div className="space-y-2">
-                            <div className="flex justify-between">
-                                <label for="password" className="text-sm">Password</label>
-                                <a rel="noopener noreferrer" href="#" className="text-xs hover:underline dark:text-gray-400">Forgot password?</a>
-                            </div>
-                            <input type="password" name="password" id="password" placeholder="*****" className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-blue-400" />
-                        </div>
+                <form onSubmit={handlelogin} className="card-body">
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Email</span>
+                        </label>
+                        <input type="Email" name="email" placeholder="email" className="input input-bordered" />
                     </div>
-                    <button type="button" className="w-full px-8 py-3 font-semibold rounded-md dark:bg-blue-400 dark:text-gray-900">Sign in</button>
+
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Password</span>
+                        </label>
+                        <input type="password" name="password" placeholder="password" className="input input-bordered" />
+
+                    </div>
+                    <div className="form-control mt-6">
+                        <button className="btn btn-primary">Login</button>
+                    </div>
                 </form>
+
             </div>
         </div>
     );
