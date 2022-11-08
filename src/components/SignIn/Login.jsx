@@ -1,9 +1,12 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { userContext } from '../context/ContextProvider';
 
 const Login = ({ children }) => {
-    const { googleSignIn } = useContext(userContext);
+    const { googleSignIn, login } = useContext(userContext);
+    // const navigate = useNavigate();
+    // const location = useLocation();
+    // const from = location.state?.from?.pathname || '/';
     const HandlegoogleLogin = () => {
         googleSignIn().then((result) => {
             console.log(result);
@@ -12,10 +15,13 @@ const Login = ({ children }) => {
 
     const handlelogin = (e) => {
         e.preventDefault();
-        const name = e.target.name.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(name, email, password);
+        login(email, password).then((result) => {
+            const user = result.user;
+            console.log(user)
+            // navigate(from, { replace: true });
+        })
 
     }
 

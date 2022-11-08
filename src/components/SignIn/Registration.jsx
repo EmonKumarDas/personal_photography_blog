@@ -1,24 +1,43 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { userContext } from '../context/ContextProvider';
 
 const Registration = ({ children }) => {
-    const { googleSignIn } = useContext(userContext);
+    const { googleSignIn,CreateUser,updateUser } = useContext(userContext);
+	// const navigate = useNavigate();
+	// const location = useLocation();
+	// const from = location.state?.from?.pathname || '/';
+    // google signIn
     const HandlegoogleLogin = () => {
         googleSignIn().then((result) => {
             console.log(result);
         })
     }
 
+    // form registration
     const hangleRegister = (e) => {
         e.preventDefault();
         const name = e.target.name.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(name, email, password);
+        
+        CreateUser(email,password).then(()=>{
+            e.target.name.value = "";
+            e.target.email.value = "";
+            e.target.password.value = "";
+            e.target.confirmPassword.value = "";
+            handleUserProfile(name);
+            // navigate(from, { replace: true });
+        })
+
 
     }
-
+    const handleUserProfile=(name)=>{
+        const profile={
+            displayName:name
+        }
+        updateUser(profile).then(()=>{})
+    }
     return (
         <div className='flex justify-center my-5'>
             <div className="w-full max-w-md p-4 rounded-md shadow sm:p-8 dark:bg-gray-900 dark:text-gray-100">
