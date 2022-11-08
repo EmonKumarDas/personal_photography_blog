@@ -8,7 +8,7 @@ const HomePage = () => {
 
     const [services,setServices] = useState([])
     useEffect(()=>{
-        fetch("photgraph.json").then(res=>res.json()).then(result=>setServices(result))
+        fetch("http://localhost:5000/services").then(res=>res.json()).then(result=>setServices(result))
     },[])
 
     return (

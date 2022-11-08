@@ -6,14 +6,14 @@ const Navbar = () => {
     <div className='flex space-x-5 font-bold'>
       <Link to="/home"><li>Home</li></Link>
       <Link to=""><li>About</li></Link>
-      <Link to=""><li>Services</li></Link>
+      <Link to="/"><li>Services</li></Link>
       <Link to=""><li>Blog</li></Link>
       <Link to=""><li>Contact</li></Link>
       <Link to="/cartDetails"><li>Cart</li></Link>
     </div>
   </>
   return (
-    <div className="navbar bg-base-100 fixed">
+    <div className="navbar bg-base-100">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">

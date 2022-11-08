@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Card = ({service}) => {
-    const {title,img,price,description} = service;
+    const {title,img,price,description,_id} = service;
 
     return (
 
@@ -15,7 +15,7 @@ const Card = ({service}) => {
                    {
                     description>=100 ? "" : description.slice(0,100)
                    }
-                   <Link to='/' className='text-blue-800'>...More</Link>
+                   <Link to={`/cartDetail/${_id}`} className='text-blue-800'>...More</Link>
                     </p>
             </div>
             <div className='grid grid-cols-2 mx-5 py-4'>
