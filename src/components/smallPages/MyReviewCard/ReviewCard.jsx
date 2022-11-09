@@ -1,7 +1,12 @@
 import React from 'react';
+import DeleteComment from '../../DeleteComment/DeleteComment';
 
 const ReviewCard = ({mycomment}) => {
     const {NewMessage,date,email,name,photo,rating,time,title,img} = mycomment;
+    
+    const handleDelete=(comment)=>{
+        console.log(comment)
+    }
     return (
         <div className='mt-5'>
             <div className="container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-700 dark:bg-gray-900 dark:text-gray-100">
@@ -23,6 +28,12 @@ const ReviewCard = ({mycomment}) => {
                 </svg>
                 <span className="text-xl font-bold">{rating}</span>
             </div>
+
+          <DeleteComment
+handleDelete={handleDelete}
+mycomment={mycomment}
+          ></DeleteComment>
+
         </div>
         <img alt="/" className="object-cover h-96 w-full rounded dark:bg-gray-500" src={img} />
         <div className="p-4 space-y-2 text-sm dark:text-gray-400">

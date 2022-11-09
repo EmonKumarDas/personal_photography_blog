@@ -1,5 +1,5 @@
 import React from 'react';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const AddService = () => {
     const handleAddService = (e) => {
@@ -65,6 +65,7 @@ const AddService = () => {
                     </div>
                 </fieldset>
             </form>
+            <ToastContainer />
         </section>
     );
 };
