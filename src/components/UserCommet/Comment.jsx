@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { userContext } from '../context/ContextProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -25,35 +25,44 @@ const Comment = ({ children,id,postData }) => {
     let total_rating = (ratingOne+ratingTwo+ratingThree)-3;
 
     // send comment to the database
+    const naviagate = useNavigate()
     const handleMessage = (e) => {
-        e.preventDefault();
-        const message = e.target.message.value;
-        let messages = {
-            NewMessage: message,
-            name,
-            email,
-            photo,
-            rating:total_rating,
-            date,
-            time,
-            title,
-            img,
-            cateId:id
+        if(!user){
+            e.preventDefault();
+            naviagate('/login');
+            toast("login before comment");
         }
-
-        fetch('http://localhost:5000/comments', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(messages),
-        })
-            .then(res => res.json())
-            .then(result => {
-                e.target.message.value = "";
-                setSubmit(true);
-                window.location.reload(true);
-                toast("Message send")
-            
+        else if(user){
+            e.preventDefault();
+            const message = e.target.message.value;
+            let messages = {
+                NewMessage: message,
+                name,
+                email,
+                photo,
+                rating:total_rating,
+                date,
+                time,
+                title,
+                img,
+                cateId:id
+            }
+    
+            fetch('http://localhost:5000/comments', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(messages),
             })
+                .then(res => res.json())
+                .then(result => {
+                    e.target.message.value = "";
+                    setSubmit(true);
+                    window.location.reload(true);
+                    toast("Message send")
+                
+                })
+        }
+        
     }
 
     return (

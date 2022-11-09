@@ -11,6 +11,7 @@ const CardDetails = () => {
 		<div>
 			<section className="dark:bg-gray-800 dark:text-gray-100">
 				<div className="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
+				<h1 className='font-bold text-3xl text-center text-white'>Cart Details</h1>
 					<div rel="noopener noreferrer" className="block max-w-sm gap-3 mx-auto sm:max-w-full group hover:no-underline focus:no-underline lg:grid lg:grid-cols-12 dark:bg-gray-900">
 
 						<PhotoProvider>
@@ -37,7 +38,6 @@ const CardDetails = () => {
 					</div>
 					<div className='flex justify-center'>
 					<DisplayComment id={_id}></DisplayComment>
-						
 					</div>
 
 

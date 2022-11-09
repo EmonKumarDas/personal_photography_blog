@@ -27,11 +27,7 @@ const Card = ({ service }) => {
             <div className='grid grid-cols-2 mx-5 py-4'>
                 <h1>Price: ${price}</h1>
                 <div className="rating">
-                    <input type="radio" name="rating-1" className="mask mask-star" />
-                    <input type="radio" name="rating-1" className="mask mask-star" checked />
-                    <input type="radio" name="rating-1" className="mask mask-star" />
-                    <input type="radio" name="rating-1" className="mask mask-star" />
-                    <input type="radio" name="rating-1" className="mask mask-star" /> <> / </> <div className="font-bold">5</div>
+                    <button className='border p-3 rounded'>Add Service</button>
                 </div>
             </div>
         </div>

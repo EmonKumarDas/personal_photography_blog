@@ -12,8 +12,7 @@ const Navbar = ({ children }) => {
   const menubar = <>
     <div className='flex space-x-5 font-bold'>
       <Link to="/home"><li>Home</li></Link>
-      <Link to=""><li>About</li></Link>
-      <Link to="/"><li>Services</li></Link>
+      <Link to="/addservices"><li>Add Services</li></Link>
       <Link to=""><li>Blog</li></Link>
       <Link to=""><li>Contact</li></Link>
       {

@@ -4,13 +4,12 @@ import { userContext } from '../context/ContextProvider';
 
 const Registration = ({ children }) => {
     const { googleSignIn,CreateUser,updateUser } = useContext(userContext);
-	// const navigate = useNavigate();
-	// const location = useLocation();
-	// const from = location.state?.from?.pathname || '/';
+	const navigate = useNavigate();
+	const location = useLocation();
+	const from = location.state?.from?.pathname || '/';
     // google signIn
     const HandlegoogleLogin = () => {
         googleSignIn().then((result) => {
-            console.log(result);
         })
     }
 
@@ -22,12 +21,12 @@ const Registration = ({ children }) => {
         const password = e.target.password.value;
         
         CreateUser(email,password).then(()=>{
-            e.target.name.value = "";
+           
             e.target.email.value = "";
             e.target.password.value = "";
             e.target.confirmPassword.value = "";
             handleUserProfile(name);
-            // navigate(from, { replace: true });
+            navigate(from, { replace: true });
         })
 
 

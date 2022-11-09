@@ -10,7 +10,7 @@ const Slider = () => {
                         <span className="dark:text-blue-400"> a professional</span> photographer
                     </h1>
                     <p className="mt-6 mb-8 text-lg sm:mb-12">Dictum aliquam porta in condimentum ac integer
-                        <p className="hidden md:inline lg:hidden">turpis pulvinar, est scelerisque ligula sem</p>
+               
                     </p>
                     <div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
                         <a rel="noopener noreferrer" href="#" className="px-8 py-3 text-lg font-semibold rounded dark:bg-blue-400 dark:text-gray-900">Suspendisse</a>

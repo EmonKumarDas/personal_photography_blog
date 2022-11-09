@@ -52,7 +52,11 @@ const HomePage = () => {
                 [...Array(pages).keys()].map(number => <button onClick={() => setPage(number)} className='bg-slate-500 hover:bg-slate-700 active:bg-slate-900 focus:outline-none text-white focus:ring focus:ring-violet-300 m-2 p-4 rounded'>{number + 1}</button>)
             }
            </div>
-            <State></State>
+           <div>
+            <h1 className='text-5xl font-bold text-center text-white dark:bg-gray-800 py-20'>My State</h1>
+           <State></State>
+           </div>
+           
 
         </div>
     );
