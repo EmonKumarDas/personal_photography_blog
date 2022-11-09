@@ -3,6 +3,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 import Comment from '../UserCommet/Comment';
+import DisplayComment from '../UserCommet/DisplayComment';
 const CardDetails = () => {
 	const carddetails = useLoaderData();
 	const { title, img, price, description, _id } = carddetails;
@@ -26,10 +27,15 @@ const CardDetails = () => {
 							<p>{description}</p>
 						</div>
 					</div>
-<div className='flex justify-center'>
-<Comment></Comment>
-</div>
-					
+					<div className='flex justify-center'>
+						<Comment></Comment>
+						
+					</div>
+					<div className='flex justify-center'>
+					<DisplayComment></DisplayComment>
+						
+					</div>
+
 
 					<Link to='/home'><button className='border p-2 rounded font-bold mt-5'>Back To Home</button></Link>
 				</div>
