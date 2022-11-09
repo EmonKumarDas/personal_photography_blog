@@ -11,7 +11,7 @@ const AddService = () => {
         const postData = {
             title,
             price,
-            image,
+            img:image,
             description,
 
         }
