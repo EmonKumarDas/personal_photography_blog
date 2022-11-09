@@ -6,9 +6,11 @@ const DisplayComment = ({id}) => {
     const [comments, setComment] = useState([]);
     console.log(`$this is${id}`)
     useEffect(() => {
-        fetch(`http://localhost:5000/comments/${id}`).then(res => res.json()).then(result => { setComment(...comments, result) })
+        fetch(`http://localhost:5000/comments/${id}`)
+        .then(res => res.json())
+        .then(result => { setComment(result) })
     }, [])
-console.log(comments)
+
     return (
         <div className="container flex flex-col w-full p-6 mx-auto divide-y rounded-md divide-gray-700 dark:bg-gray-900 dark:text-gray-100">
 

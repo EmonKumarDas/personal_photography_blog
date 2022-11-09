@@ -1,7 +1,7 @@
 import React from 'react';
 
 const CommentCart = ({comment}) => {
-    const {NewMessage,email,name,photo,rating} = comment;
+    const {NewMessage,email,name,photo,rating,date,time} = comment;
     console.log(comment)
     return (
         <div>
@@ -13,7 +13,8 @@ const CommentCart = ({comment}) => {
                     <div>
                         <h4 className="font-bold">{name}</h4>
                         <h4 className="text-xs dark:text-gray-400">{email}</h4>
-                        <span className="text-xs dark:text-gray-400">2 days ago</span>
+                        <span className="text-xs dark:text-gray-400">Date: {date}</span><br></br>
+                        <span className="text-xs dark:text-gray-400">Time: {time}</span>
                     </div>
                 </div>
                 <div className="flex items-center space-x-2 dark:text-yellow-500">

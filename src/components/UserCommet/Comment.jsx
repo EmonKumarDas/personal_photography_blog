@@ -6,6 +6,11 @@ import 'react-toastify/dist/ReactToastify.css';
 const Comment = ({ children,id }) => {
     const { user } = useContext(userContext);
     let email = user?.email;
+    let name = user?.displayName;
+    let photo = user?.photoURL;
+    let dateTime = new Date();
+    var date = dateTime.getFullYear()+'-'+(dateTime.getMonth()+1)+'-'+dateTime.getDate();
+    var time = dateTime.getHours() + ":" + dateTime.getMinutes() + ":" + dateTime.getSeconds();
     console.log(id)
     const [ratingOne,setRatingOne] = useState(0);
     const [ratingTwo,setRatingTwo] = useState(1);
@@ -17,10 +22,12 @@ const Comment = ({ children,id }) => {
         const message = e.target.message.value;
         let messages = {
             NewMessage: message,
-            name: user?.displayName,
+            name,
             email,
-            photo: user?.photoURL,
+            photo,
             rating:total_rating,
+            date,
+            time,
             cateId:id
         }
 
@@ -33,6 +40,7 @@ const Comment = ({ children,id }) => {
             .then(result => {
                 e.target.message.value = "";
                 setSubmit(true);
+                window.location.reload(true);
                 toast("Message send")
             
             })
@@ -41,7 +49,7 @@ const Comment = ({ children,id }) => {
     return (
         <div className="flex flex-col w-full p-8 shadow-sm rounded-xl lg:p-12 dark:bg-gray-900 dark:text-gray-100">
             <div className="flex flex-col items-center w-full">
-                <h2 className="text-3xl font-semibold text-center">Your opinion matters!</h2>
+                <h2 className="text-3xl font-semibold text-center">Your Review!</h2>
                 <div className="flex flex-col items-center py-6 space-y-3">
 
                 </div>
