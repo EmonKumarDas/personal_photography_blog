@@ -28,11 +28,11 @@ const CardDetails = () => {
 						</div>
 					</div>
 					<div className='flex justify-center'>
-						<Comment></Comment>
+						<Comment id={_id}></Comment>
 						
 					</div>
 					<div className='flex justify-center'>
-					<DisplayComment></DisplayComment>
+					<DisplayComment id={_id}></DisplayComment>
 						
 					</div>
 

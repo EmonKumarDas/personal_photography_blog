@@ -3,24 +3,25 @@ import { Link } from 'react-router-dom';
 import { userContext } from '../context/ContextProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-const Comment = ({ children }) => {
+const Comment = ({ children,id }) => {
     const { user } = useContext(userContext);
+    let email = user?.email;
+    console.log(id)
     const [ratingOne,setRatingOne] = useState(0);
     const [ratingTwo,setRatingTwo] = useState(1);
     const [ratingThree,setRatingThree] = useState(2);
     const[isSubmit,setSubmit] = useState(false);
     let total_rating = (ratingOne+ratingTwo+ratingThree)-3;
-   console.log(ratingOne,ratingTwo,ratingThree)
     const handleMessage = (e) => {
         e.preventDefault();
         const message = e.target.message.value;
         let messages = {
             NewMessage: message,
             name: user?.displayName,
-            email: user?.email,
+            email,
             photo: user?.photoURL,
-            rating:total_rating
-
+            rating:total_rating,
+            cateId:id
         }
 
         fetch('http://localhost:5000/comments', {
@@ -33,7 +34,7 @@ const Comment = ({ children }) => {
                 e.target.message.value = "";
                 setSubmit(true);
                 toast("Message send")
-                console.log(result)
+            
             })
     }
 
