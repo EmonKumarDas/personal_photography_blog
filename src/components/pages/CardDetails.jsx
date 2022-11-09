@@ -28,7 +28,11 @@ const CardDetails = () => {
 						</div>
 					</div>
 					<div className='flex justify-center'>
-						<Comment id={_id}></Comment>
+						<Comment 
+						id={_id}
+						key={_id}
+						postData={carddetails}
+						></Comment>
 						
 					</div>
 					<div className='flex justify-center'>

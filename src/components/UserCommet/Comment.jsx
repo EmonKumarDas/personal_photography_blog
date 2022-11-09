@@ -3,20 +3,28 @@ import { Link } from 'react-router-dom';
 import { userContext } from '../context/ContextProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-const Comment = ({ children,id }) => {
+const Comment = ({ children,id,postData }) => {
     const { user } = useContext(userContext);
+
+    // get post info
+    const { title, img} = postData;
+    
+    // get user data
     let email = user?.email;
     let name = user?.displayName;
     let photo = user?.photoURL;
     let dateTime = new Date();
     var date = dateTime.getFullYear()+'-'+(dateTime.getMonth()+1)+'-'+dateTime.getDate();
     var time = dateTime.getHours() + ":" + dateTime.getMinutes() + ":" + dateTime.getSeconds();
-    console.log(id)
+
+    // configure rating
     const [ratingOne,setRatingOne] = useState(0);
     const [ratingTwo,setRatingTwo] = useState(1);
     const [ratingThree,setRatingThree] = useState(2);
     const[isSubmit,setSubmit] = useState(false);
     let total_rating = (ratingOne+ratingTwo+ratingThree)-3;
+
+    // send comment to the database
     const handleMessage = (e) => {
         e.preventDefault();
         const message = e.target.message.value;
@@ -28,6 +36,8 @@ const Comment = ({ children,id }) => {
             rating:total_rating,
             date,
             time,
+            title,
+            img,
             cateId:id
         }
 

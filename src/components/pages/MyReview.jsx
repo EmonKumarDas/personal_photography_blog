@@ -13,9 +13,10 @@ console.log(myComments);
     },[user?.email])
 
     return (
-       <div className='my-10'>
+       <div className='my-10 flex'>
+
          {
-            myComments.map(mycomment=><ReviewCard
+           myComments.length===0?<h1 className='flex justify-center font-bold text-3xl my-40'>No Comments are Found</h1>: myComments.map(mycomment=> <ReviewCard
             key={mycomment._id}
             mycomment={mycomment}
             ></ReviewCard>)
