@@ -8,6 +8,7 @@ const Comment = ({ children }) => {
     const [ratingOne,setRatingOne] = useState(0);
     const [ratingTwo,setRatingTwo] = useState(1);
     const [ratingThree,setRatingThree] = useState(2);
+    const[isSubmit,setSubmit] = useState(false);
     let total_rating = (ratingOne+ratingTwo+ratingThree)-3;
    console.log(ratingOne,ratingTwo,ratingThree)
     const handleMessage = (e) => {
@@ -17,7 +18,9 @@ const Comment = ({ children }) => {
             NewMessage: message,
             name: user?.displayName,
             email: user?.email,
-            photo: user?.photoURL
+            photo: user?.photoURL,
+            rating:total_rating
+
         }
 
         fetch('http://localhost:5000/comments', {
@@ -28,6 +31,7 @@ const Comment = ({ children }) => {
             .then(res => res.json())
             .then(result => {
                 e.target.message.value = "";
+                setSubmit(true);
                 toast("Message send")
                 console.log(result)
             })
@@ -43,6 +47,7 @@ const Comment = ({ children }) => {
                 <form onSubmit={handleMessage} className="flex flex-col w-full">
                     <textarea rows="3" name="message" placeholder="Write Your Message..." className="p-4 rounded-md resize-none dark:text-gray-100 dark:bg-gray-900"></textarea>
                     {/* Ratting  start*/}
+                    <p className="dark:text-gray-400">Please Rate My Photography</p>
             <div className="flex flex-wrap items-center mt-2 mb-1 space-x-2">
 			<div className="flex">
 				<button onClick={()=>setRatingOne(ratingOne+1)} disabled = {ratingOne===1 ? true:false} title="Rate 1 stars" aria-label="Rate 1 stars">
@@ -62,7 +67,7 @@ const Comment = ({ children }) => {
 				</button>
 
 			</div>
-			<span className="dark:text-gray-400">{total_rating} out of 3</span>
+			<span className="dark:text-gray-400">{isSubmit===true?total_rating===0:total_rating} out of 3</span>
 		</div>
             {/* Ratting  end*/}
                     <button className="py-4 my-8 font-semibold rounded-md dark:text-gray-900 dark:bg-blue-400">Leave feedback</button>
