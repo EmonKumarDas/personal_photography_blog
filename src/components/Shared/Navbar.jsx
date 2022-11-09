@@ -16,7 +16,9 @@ const Navbar = ({ children }) => {
       <Link to="/"><li>Services</li></Link>
       <Link to=""><li>Blog</li></Link>
       <Link to=""><li>Contact</li></Link>
-      <Link to="/cartDetails"><li>Cart</li></Link>
+      {
+        user?<Link to="/review"><li>My Review</li></Link>:""
+      }
     </div>
   </>
   return (
