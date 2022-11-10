@@ -12,14 +12,11 @@ const ContextProvider = ({children}) => {
     const googleSignIn=()=>signInWithPopup(auth,provider);
 
     // sign in with email and password
-    const CreateUser=(email,password)=> {
-        setLoding(true)
-        return createUserWithEmailAndPassword(auth,email,password)};
+    const CreateUser=(email,password)=> createUserWithEmailAndPassword(auth,email,password);
 
     // login with email and password
-    const login=(email,password)=>{
-        setLoding(true)
-        signInWithEmailAndPassword(auth,email,password)};
+    const login=(email,password)=>
+        signInWithEmailAndPassword(auth,email,password);
        
 
 
@@ -29,8 +26,8 @@ const ContextProvider = ({children}) => {
 
     // logOut user
     const logout=()=>{
-        localStorage.removeItem('photographyToken');
-        signOut(auth)}; 
+        localStorage.removeItem('photographyToken')
+        return signOut(auth)}; 
 
     // get Current User
     useEffect(()=>{
