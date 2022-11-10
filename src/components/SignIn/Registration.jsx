@@ -5,14 +5,15 @@ import { userContext } from '../context/ContextProvider';
 
 import useTitle from '../Hook/UseHook';
 const Registration = ({ children }) => {
-useTitle("Registration")
-    const { googleSignIn,CreateUser,updateUser } = useContext(userContext);
-	const navigate = useNavigate();
-	const location = useLocation();
-	const from = location.state?.from?.pathname || '/';
+    useTitle("Registration")
+    const { googleSignIn, CreateUser, updateUser } = useContext(userContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
     // google signIn
     const HandlegoogleLogin = () => {
         googleSignIn().then((result) => {
+            navigate(from, { replace: true });
         })
     }
 
@@ -22,27 +23,27 @@ useTitle("Registration")
         const name = e.target.name.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
-        
-        CreateUser(email,password).then(()=>{
-           
+
+        CreateUser(email, password).then(() => {
+
             e.target.email.value = "";
             e.target.password.value = "";
             e.target.name.value = "";
             handleUserProfile(name);
             toast("Registration success")
             navigate(from, { replace: true });
-        }).catch((error)=>{
+        }).catch((error) => {
             const errorMessage = error.message;
             toast(errorMessage)
         })
 
 
     }
-    const handleUserProfile=(name)=>{
-        const profile={
-            displayName:name
+    const handleUserProfile = (name) => {
+        const profile = {
+            displayName: name
         }
-        updateUser(profile).then(()=>{})
+        updateUser(profile).then(() => { })
     }
     return (
         <div className='flex justify-center my-5'>

@@ -6,8 +6,8 @@ import Loading from '../smallPages/Spinner/Loading';
 
 import useTitle from '../Hook/UseHook';
 const Login = ({ children }) => {
-useTitle("Login")
-    const { googleSignIn, login} = useContext(userContext);
+    useTitle("Login")
+    const { googleSignIn, login } = useContext(userContext);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
@@ -21,12 +21,32 @@ useTitle("Login")
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
-        login(email, password).then((result) => {
-            toast("Login success")
-            navigate(from, { replace: true });
-        }).catch((error)=>{
-            toast("User Not Found");
-        })
+        login(email, password)
+            .then((result) => {
+                const user = result.user;
+                const currentUser = { email: user.email };
+
+                console.log(currentUser);
+
+                // getting jwt token
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json',
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(result => {
+                        localStorage.setItem('photographyToken', result.token);
+                        console.log(result)
+                    })
+
+                toast("Login success")
+                navigate(from, { replace: true });
+            }).catch((error) => {
+                toast("User Not Found");
+            })
 
     }
 
