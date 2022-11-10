@@ -11,7 +11,7 @@ const MyReview = () => {
   const [myComments, setComments] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch(`http://localhost:5000/comments?email=${user?.email}`, {
+    fetch(`https://photograpy-server.vercel.app/comments?email=${user?.email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem('photographyToken')}`
       }

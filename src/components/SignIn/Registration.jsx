@@ -13,6 +13,24 @@ const Registration = ({ children }) => {
     // google signIn
     const HandlegoogleLogin = () => {
         googleSignIn().then((result) => {
+            const user = result.user.email;
+              
+            const currentUser = { email: user };
+
+            // getting jwt token
+            fetch('https://photograpy-server.vercel.app/jwt', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify(currentUser)
+            })
+                .then(res => res.json())
+                .then(result => {
+                    localStorage.setItem('photographyToken', result.token);
+                    console.log(result)
+                })
+            toast("Login success")
             navigate(from, { replace: true });
         })
     }
@@ -24,20 +42,37 @@ const Registration = ({ children }) => {
         const email = e.target.email.value;
         const password = e.target.password.value;
 
-        CreateUser(email, password).then(() => {
-
+        CreateUser(email, password)
+        .then((result) => {
             e.target.email.value = "";
             e.target.password.value = "";
             e.target.name.value = "";
+            console.log(result)
+            const user = result.user.email;
+            console.log(user)
+            const currentUser = { email: user };
             handleUserProfile(name);
+
+            // getting jwt token
+            fetch('https://photograpy-server.vercel.app/jwt', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify(currentUser)
+            })
+                .then(res => res.json())
+                .then(result => {
+                    localStorage.setItem('photographyToken', result.token);
+                    console.log(result)
+                })
+
             toast("Registration success")
             navigate(from, { replace: true });
         }).catch((error) => {
             const errorMessage = error.message;
             toast(errorMessage)
         })
-
-
     }
     const handleUserProfile = (name) => {
         const profile = {
@@ -90,7 +125,7 @@ const Registration = ({ children }) => {
 
                     </div>
                     <div className="form-control mt-6">
-                        <button className="btn btn-primary">Login</button>
+                        <button className="btn btn-primary">Register</button>
                     </div>
                 </form>
 

@@ -8,7 +8,7 @@ const ReviewCard = ({ mycomment }) => {
     const { NewMessage, date, email, name, photo, rating, time, title, img } = mycomment;
 
     const handleDelete = (comment) => {
-        fetch(`http://localhost:5000/commentsDelete/${comment._id}`,{
+        fetch(`https://photograpy-server.vercel.app/commentsDelete/${comment._id}`,{
             method:'DELETE',
         })
             .then(res => res.json())

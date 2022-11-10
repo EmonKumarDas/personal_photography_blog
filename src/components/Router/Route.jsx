@@ -29,7 +29,7 @@ const router = createBrowserRouter([
 
         {
           path: "/cartDetail/:id",
-          loader:({params})=>fetch(`http://localhost:5000/services/${params.id}`),
+          loader:({params})=>fetch(`https://photograpy-server.vercel.app/services/${params.id}`),
           element:<CardDetails></CardDetails>,
       },
         {
@@ -63,7 +63,7 @@ const router = createBrowserRouter([
       },
       {
         path:"/update/:id",
-        loader:({params})=>fetch(`http://localhost:5000/editcomment/${params.id}`),
+        loader:({params})=>fetch(`https://photograpy-server.vercel.app/editcomment/${params.id}`),
         element:<UpdateInputField></UpdateInputField>
       },
 

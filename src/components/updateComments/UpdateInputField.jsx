@@ -10,7 +10,7 @@ const UpdateInputField = () => {
         event.preventDefault();
         const NewMessage = event.target.comment.value;
         const comments = {NewMessage}
-        fetch(`http://localhost:5000/commentsEdit/${comment._id}`, {
+        fetch(`https://photograpy-server.vercel.app/commentsEdit/${comment._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

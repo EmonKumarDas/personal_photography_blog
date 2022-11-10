@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
 import AllcategorisCart from '../smallPages/Card/AllcategorisCart';
 import Loading from '../smallPages/Spinner/Loading';
 
@@ -10,8 +9,7 @@ useTitle("AllCategories")
     const [loading, setLoading] = useState(true);
     const [categories, setCategories] = useState([]);
     useEffect(() => {
-        fetch("http://localhost:5000/services").then(res => res.json()).then(result => {
-
+        fetch("https://photograpy-server.vercel.app/services").then(res => res.json()).then(result => {
             setCategories(result.newService)
             setLoading(false)
         })

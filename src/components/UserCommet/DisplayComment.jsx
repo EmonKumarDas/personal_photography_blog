@@ -5,7 +5,7 @@ const DisplayComment = ({id}) => {
     const [comments, setComment] = useState([]);
     console.log(`$this is${id}`)
     useEffect(() => {
-        fetch(`http://localhost:5000/comments/${id}`)
+        fetch(`https://photograpy-server.vercel.app/comments/${id}`)
         .then(res => res.json())
         .then(result => { setComment(result) })
     }, [])

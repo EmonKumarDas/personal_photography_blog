@@ -17,7 +17,7 @@ const AddService = () => {
             description,
 
         }
-        fetch('http://localhost:5000/ServiceCollection', {
+        fetch('https://photograpy-server.vercel.app/ServiceCollection', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(postData),

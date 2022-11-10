@@ -17,7 +17,7 @@ const HomePage = () => {
     const pages = Math.ceil(counter / size);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/services?page=${page}&size=${size}`)
+        fetch(`https://photograpy-server.vercel.app/services?page=${page}&size=${size}`)
         .then(res => res.json())
         .then(result => {
             setCounter(result.count)

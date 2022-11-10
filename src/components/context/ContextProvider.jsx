@@ -9,17 +9,21 @@ const ContextProvider = ({children}) => {
     const auth = getAuth(app);
 
     // google signIn
-    const googleSignIn=()=>signInWithPopup(auth,provider);
+    const googleSignIn=()=>{
+        setLoding(true)
+        return signInWithPopup(auth,provider)};
 
     // sign in with email and password
-    const CreateUser=(email,password)=> createUserWithEmailAndPassword(auth,email,password);
+    const CreateUser=(email,password)=> {
+        setLoding(true)
+        return createUserWithEmailAndPassword(auth,email,password)};
 
     // login with email and password
     const login=(email,password)=>
-        signInWithEmailAndPassword(auth,email,password);
+        {
+            setLoding(true);
+            return signInWithEmailAndPassword(auth,email,password)};
        
-
-
     // updata user
     const updateUser=(profile)=> updateProfile(auth.currentUser,profile);
 
@@ -31,8 +35,8 @@ const ContextProvider = ({children}) => {
 
     // get Current User
     useEffect(()=>{
-        const unsubscribe=onAuthStateChanged(auth, (user) => {
-            setUser(user)
+        const unsubscribe=onAuthStateChanged(auth, (currentuser) => {
+            setUser(currentuser)
             setLoding(false)
         })
         return unsubscribe;
