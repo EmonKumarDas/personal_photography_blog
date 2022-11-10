@@ -4,22 +4,24 @@ import { toast } from 'react-toastify';
 
 const UpdateInputField = () => {
     const comment = useLoaderData();
-    const handleUpdate=(event)=>{
+
+    const handleUpdate = (event) => {
         event.preventDefault();
         const NewMessage = event.target.comment.value;
         const comments = {NewMessage}
-        fetch(`http://localhost:5000/commentsEdit/${comment._id}`,{
-            method:'PUT',
-            headers:{
+        fetch(`http://localhost:5000/commentsEdit/${comment._id}`, {
+            method: 'PUT',
+            headers: {
                 'content-type': 'application/json',
-                body:JSON.stringify(comments)
-            }
-        }
-        
-        ).then(res=>res.json()).then(data=>{
-            toast("updated")
-            console.log(data)})
+            },
+            body: JSON.stringify(comments)
+
+        }).then(res => res.json()).then(result => {
+            toast("update comments")
+            console.log(result)})
     }
+
+
     return (
         <div className='my-5'>
             <section className="p-6 dark:text-gray-100">
