@@ -1,12 +1,14 @@
 import React, { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { userContext } from '../context/ContextProvider';
+import Loading from '../smallPages/Spinner/Loading';
 
 const Login = ({ children }) => {
-    const { googleSignIn, login } = useContext(userContext);
-    // const navigate = useNavigate();
-    // const location = useLocation();
-    // const from = location.state?.from?.pathname || '/';
+    const { googleSignIn, login,isloding } = useContext(userContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
     const HandlegoogleLogin = () => {
         googleSignIn().then((result) => {
             console.log(result);
@@ -18,9 +20,10 @@ const Login = ({ children }) => {
         const email = e.target.email.value;
         const password = e.target.password.value;
         login(email, password).then((result) => {
-            const user = result.user;
-            console.log(user)
-            // navigate(from, { replace: true });
+            toast("Login success")
+            navigate(from, { replace: true });
+        }).catch((error)=>{
+            toast("User Not Found");
         })
 
     }

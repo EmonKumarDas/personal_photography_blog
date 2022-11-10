@@ -1,6 +1,7 @@
 import React from 'react';
 import DeleteComment from '../../DeleteComment/DeleteComment';
-
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const ReviewCard = ({ mycomment }) => {
     const { NewMessage, date, email, name, photo, rating, time, title, img } = mycomment;
 
@@ -11,7 +12,7 @@ const ReviewCard = ({ mycomment }) => {
             .then(res => res.json())
             .then(data => {
                 if (data.deletedCount > 0) {
-                    alert("Deleted");
+                    toast("Comment Deleted")
                     window.location.reload(true);
                 }
             })

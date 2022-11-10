@@ -8,6 +8,7 @@ import HomePage from "../pages/HomePage";
 import MyReview from "../pages/MyReview";
 import Login from "../SignIn/Login";
 import Registration from "../SignIn/Registration";
+import UpdateInputField from "../updateComments/UpdateInputField";
 import Main from "./Main";
 import PrivateRoute from "./PrivateRoute";
 
@@ -59,6 +60,11 @@ const router = createBrowserRouter([
       {
         path:"/blog",
         element:<Blog></Blog>
+      },
+      {
+        path:"/update/:id",
+        loader:({params})=>fetch(`http://localhost:5000/editcomment/${params.id}`),
+        element:<UpdateInputField></UpdateInputField>
       },
 
       ]

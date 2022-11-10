@@ -15,7 +15,10 @@ const ContextProvider = ({children}) => {
     const CreateUser=(email,password)=> createUserWithEmailAndPassword(auth,email,password);
 
     // login with email and password
-    const login=(email,password)=> signInWithEmailAndPassword(auth,email,password);
+    const login=(email,password)=> {
+        signInWithEmailAndPassword(auth,email,password)
+       
+    };
 
     // updata user
     const updateUser=(profile)=> updateProfile(auth.currentUser,profile);

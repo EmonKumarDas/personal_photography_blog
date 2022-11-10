@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { userContext } from '../context/ContextProvider';
 
 const Registration = ({ children }) => {
@@ -26,7 +27,11 @@ const Registration = ({ children }) => {
             e.target.password.value = "";
             e.target.name.value = "";
             handleUserProfile(name);
+            toast("Registration success")
             navigate(from, { replace: true });
+        }).catch((error)=>{
+            const errorMessage = error.message;
+            toast(errorMessage)
         })
 
 
