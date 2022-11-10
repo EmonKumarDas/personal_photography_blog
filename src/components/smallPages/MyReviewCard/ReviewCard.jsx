@@ -2,7 +2,9 @@ import React from 'react';
 import DeleteComment from '../../DeleteComment/DeleteComment';
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 const ReviewCard = ({ mycomment }) => {
+
     const { NewMessage, date, email, name, photo, rating, time, title, img } = mycomment;
 
     const handleDelete = (comment) => {

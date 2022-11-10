@@ -1,7 +1,9 @@
 import React from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import useTitle from '../Hook/UseHook';
 const AddService = () => {
+    useTitle("AddService")
     const handleAddService = (e) => {
         e.preventDefault();
         const title = e.target.title.value;

@@ -4,7 +4,9 @@ import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 import Comment from '../UserCommet/Comment';
 import DisplayComment from '../UserCommet/DisplayComment';
+import useTitle from '../Hook/UseHook';
 const CardDetails = () => {
+useTitle("CardDetails")
 	const carddetails = useLoaderData();
 	const { title, img, price, description, _id } = carddetails;
 	return (

@@ -3,7 +3,9 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { userContext } from '../context/ContextProvider';
 
+import useTitle from '../Hook/UseHook';
 const Registration = ({ children }) => {
+useTitle("Registration")
     const { googleSignIn,CreateUser,updateUser } = useContext(userContext);
 	const navigate = useNavigate();
 	const location = useLocation();

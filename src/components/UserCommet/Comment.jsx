@@ -3,9 +3,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { userContext } from '../context/ContextProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import useTitle from '../Hook/UseHook';
 const Comment = ({ children,id,postData }) => {
     const { user } = useContext(userContext);
-
+    useTitle("Comment")
     // get post info
     const { title, img} = postData;
     

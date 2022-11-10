@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import useTitle from '../Hook/UseHook';
 const DeleteComment = ({handleDelete,mycomment}) => {
+useTitle("DeleteComment")
     return (
         <div>
         <button onClick={()=>handleDelete(mycomment)} className="flex text-red-600 font-bold items-center px-2 py-1 pl-0 space-x-1">

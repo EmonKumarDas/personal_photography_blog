@@ -4,6 +4,7 @@ import 'react-photo-view/dist/react-photo-view.css';
 import { Link } from 'react-router-dom';
 
 const AllcategorisCart = ({ allCategories }) => {
+
     console.log(allCategories)
     const { title, img, price, description,_id } = allCategories;
     return (

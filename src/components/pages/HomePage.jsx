@@ -6,8 +6,9 @@ import Slider from '../smallPages/Slider/Slider';
 import Loading from '../smallPages/Spinner/Loading';
 import State from '../smallPages/state/State';
 
+import useTitle from '../Hook/UseHook';
 const HomePage = () => {
-
+    useTitle("HomePage")
     const [services, setServices] = useState([])
     const [counter, setCounter] = useState([]);
     const [page, setPage] = useState(0);

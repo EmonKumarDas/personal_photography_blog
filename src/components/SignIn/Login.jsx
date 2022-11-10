@@ -4,8 +4,10 @@ import { toast } from 'react-toastify';
 import { userContext } from '../context/ContextProvider';
 import Loading from '../smallPages/Spinner/Loading';
 
+import useTitle from '../Hook/UseHook';
 const Login = ({ children }) => {
-    const { googleSignIn, login,isloding } = useContext(userContext);
+useTitle("Login")
+    const { googleSignIn, login} = useContext(userContext);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';

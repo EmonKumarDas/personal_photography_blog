@@ -2,7 +2,9 @@ import React, { useContext, useEffect, useState } from 'react';
 import { userContext } from '../context/ContextProvider';
 import ReviewCard from '../smallPages/MyReviewCard/ReviewCard';
 import Loading from '../smallPages/Spinner/Loading';
+import useTitle from '../Hook/UseHook';
 const MyReview = () => {
+useTitle("MyReview");
   const { user } = useContext(userContext);
   const [myComments, setComments] = useState([]);
   const [loading, setLoading] = useState(true);

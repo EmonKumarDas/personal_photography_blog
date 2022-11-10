@@ -2,9 +2,10 @@ import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
+import useTitle from '../Hook/UseHook';
 const UpdateInputField = () => {
     const comment = useLoaderData();
-
+    useTitle("updateComments")
     const handleUpdate = (event) => {
         event.preventDefault();
         const NewMessage = event.target.comment.value;

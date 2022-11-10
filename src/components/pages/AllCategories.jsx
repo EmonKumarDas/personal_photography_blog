@@ -3,7 +3,9 @@ import { useLoaderData } from 'react-router-dom';
 import AllcategorisCart from '../smallPages/Card/AllcategorisCart';
 import Loading from '../smallPages/Spinner/Loading';
 
+import useTitle from '../Hook/UseHook';
 const AllCategories = () => {
+useTitle("AllCategories")  
     // const allCategories = useLoaderData();
     const [loading, setLoading] = useState(true);
     const [categories, setCategories] = useState([]);
