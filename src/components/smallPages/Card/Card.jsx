@@ -2,12 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
-const Card = ({ service }) => {
+import Loading from '../Spinner/Loading';
+const Card = ({ service,loding }) => {
     const { title, img, price, description, _id } = service;
 
     return (
 
         <div href="#" className="max-w-sm mx-auto group hover:no-underline focus:no-underline dark:bg-gray-900 sm:block">
+           
             <PhotoProvider>
                 <PhotoView src={img}>
                     <img alt="/" className="object-cover h-96 w-full rounded dark:bg-gray-500" src={img} />
@@ -26,9 +28,6 @@ const Card = ({ service }) => {
             </div>
             <div className='grid grid-cols-2 mx-5 py-4'>
                 <h1>Price: ${price}</h1>
-                <div className="rating">
-                    <button className='border p-3 rounded'>Add Service</button>
-                </div>
             </div>
         </div>
     );
