@@ -24,7 +24,7 @@ const Registration = ({ children }) => {
            
             e.target.email.value = "";
             e.target.password.value = "";
-            e.target.confirmPassword.value = "";
+            e.target.name.value = "";
             handleUserProfile(name);
             navigate(from, { replace: true });
         })

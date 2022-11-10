@@ -13,11 +13,12 @@ const Navbar = ({ children }) => {
     <div className='flex space-x-5 font-bold'>
       <Link to="/home"><li>Home</li></Link>
       <Link to="/addservices"><li>Add Services</li></Link>
-      <Link to=""><li>Blog</li></Link>
+      <Link to="/blog"><li>Blog</li></Link>
       <Link to=""><li>Contact</li></Link>
       {
         user?<Link to="/review"><li>My Review</li></Link>:""
       }
+      <p>{user?.displayName}</p>
     </div>
   </>
   return (

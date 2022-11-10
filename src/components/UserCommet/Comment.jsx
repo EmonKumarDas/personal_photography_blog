@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { userContext } from '../context/ContextProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -73,7 +73,7 @@ const Comment = ({ children,id,postData }) => {
 
                 </div>
                 <form onSubmit={handleMessage} className="flex flex-col w-full">
-                    <textarea rows="3" name="message" placeholder="Write Your Message..." className="p-4 rounded-md resize-none dark:text-gray-100 dark:bg-gray-900"></textarea>
+                    <textarea rows="3" required name="message" placeholder="Write Your Message..." className="p-4 rounded-md resize-none dark:text-gray-100 dark:bg-gray-900"></textarea>
                     {/* Ratting  start*/}
                     <p className="dark:text-gray-400">Please Rate My Photography</p>
             <div className="flex flex-wrap items-center mt-2 mb-1 space-x-2">
