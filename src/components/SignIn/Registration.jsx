@@ -1,20 +1,22 @@
 import React, { useContext } from 'react';
+import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { userContext } from '../context/ContextProvider';
-
 import useTitle from '../Hook/UseHook';
+
 const Registration = ({ children }) => {
+
     useTitle("Registration")
     const { googleSignIn, CreateUser, updateUser } = useContext(userContext);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
+    const [loading, setLoading] = useState(false)
     // google signIn
     const HandlegoogleLogin = () => {
         googleSignIn().then((result) => {
             const user = result.user.email;
-              
             const currentUser = { email: user };
 
             // getting jwt token
@@ -29,10 +31,12 @@ const Registration = ({ children }) => {
                 .then(result => {
                     localStorage.setItem('photographyToken', result.token);
                     console.log(result)
+
                 })
             toast("Login success")
             navigate(from, { replace: true });
         })
+
     }
 
     // form registration
@@ -41,38 +45,39 @@ const Registration = ({ children }) => {
         const name = e.target.name.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
-
+        setLoading(true)
         CreateUser(email, password)
-        .then((result) => {
-            e.target.email.value = "";
-            e.target.password.value = "";
-            e.target.name.value = "";
-            console.log(result)
-            const user = result.user.email;
-            console.log(user)
-            const currentUser = { email: user };
-            handleUserProfile(name);
+            .then((result) => {
+                e.target.email.value = "";
+                e.target.password.value = "";
+                e.target.name.value = "";
+                console.log(result)
+                const user = result.user.email;
+                console.log(user)
+                const currentUser = { email: user };
+                handleUserProfile(name);
 
-            // getting jwt token
-            fetch('https://photograpy-server.vercel.app/jwt', {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json',
-                },
-                body: JSON.stringify(currentUser)
-            })
-                .then(res => res.json())
-                .then(result => {
-                    localStorage.setItem('photographyToken', result.token);
-                    console.log(result)
+                // getting jwt token
+                fetch('https://photograpy-server.vercel.app/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json',
+                    },
+                    body: JSON.stringify(currentUser)
                 })
+                    .then(res => res.json())
+                    .then(result => {
+                        localStorage.setItem('photographyToken', result.token);
+                        console.log(result)
+                    })
 
-            toast("Registration success")
-            navigate(from, { replace: true });
-        }).catch((error) => {
-            const errorMessage = error.message;
-            toast(errorMessage)
-        })
+                toast("Registration success")
+                navigate(from, { replace: true });
+                setLoading(false)
+            }).catch((error) => {
+                const errorMessage = error.message;
+                toast(errorMessage)
+            })
     }
     const handleUserProfile = (name) => {
         const profile = {
@@ -125,7 +130,7 @@ const Registration = ({ children }) => {
 
                     </div>
                     <div className="form-control mt-6">
-                        <button className="btn btn-primary">Register</button>
+                        <button className="btn btn-primary">{loading ? "Loading..." : "Register"}</button>
                     </div>
                 </form>
 

@@ -1,8 +1,7 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { userContext } from '../context/ContextProvider';
-import Loading from '../smallPages/Spinner/Loading';
 
 import useTitle from '../Hook/UseHook';
 const Login = ({ children }) => {
@@ -10,12 +9,14 @@ const Login = ({ children }) => {
     const { login } = useContext(userContext);
     const navigate = useNavigate();
     const location = useLocation();
+    const [loading,setLoading] = useState(false);
     const from = location.state?.from?.pathname || '/';
 
     const handlelogin = (e) => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
+        setLoading(true);
         login(email, password)
             .then((result) => {
                 const user = result.user;
@@ -39,6 +40,7 @@ const Login = ({ children }) => {
 
                 toast("Login success")
                 navigate(from, { replace: true });
+                setLoading(false)
             }).catch((error) => {
                 toast("User Not Found");
             })
@@ -75,7 +77,7 @@ const Login = ({ children }) => {
 
                     </div>
                     <div className="form-control mt-6">
-                        <button className="btn btn-primary">Login</button>
+                        <button className="btn btn-primary">{loading?"Loading...":"Login"}</button>
                     </div>
                 </form>
 

@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useTitle from '../Hook/UseHook';
 const AddService = () => {
     useTitle("AddService")
+    const [loading,setLoading] = useState(false);
     const handleAddService = (e) => {
         e.preventDefault();
         const title = e.target.title.value;
@@ -17,6 +18,7 @@ const AddService = () => {
             description,
 
         }
+        setLoading(true);
         fetch('https://photograpy-server.vercel.app/ServiceCollection', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -29,7 +31,7 @@ const AddService = () => {
                 e.target.price.value = ""
                 e.target.image.value = ""
                 e.target.description.value=""
-                
+                setLoading(false)
 
             })
     }
@@ -61,7 +63,7 @@ const AddService = () => {
 
                             <div className="flex items-center space-x-2">
 
-                                <button className="px-4 py-2 border rounded-md dark:border-gray-100">Add Service</button>
+                                <button className="px-4 py-2 border rounded-md dark:border-gray-100">{loading?"Loading...":"Add Service"}</button>
                             </div>
                         </div>
                     </div>
